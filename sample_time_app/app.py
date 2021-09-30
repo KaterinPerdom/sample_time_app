@@ -1,16 +1,18 @@
+from datetime import datetime
 from flask import Flask
-from datetime import date
 app = Flask(__name__)
 
-@app.route("/home")
-def home():
-    return "Hello Katerine :D "
 
+@app.route('/')
+def hello_world():
+    return 'Hello Katerine :D!'
 
 @app.route('/time')
 def time():
-    today = date.today()
-    return (str(today))
+    now = datetime.now()
+    time = now.strftime("%m/%d/%Y, %H:%M:%S")
+    return time
+
 
 
 app.run(host='0.0.0.0',
